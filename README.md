@@ -1,2 +1,4 @@
-#PortScanner
-Simple Python Port Scanner Which used to Scanner Open port on specific target 
+# PortScanner
+
+A simple python port scanner which used to scanner open ports in a specific target.
+ 
