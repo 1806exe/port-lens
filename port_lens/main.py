@@ -108,6 +108,3 @@ def main():
     except KeyboardInterrupt:
         print('You pressed Ctrl + C. Exiting..')
         sys.exit(1)
-
-if __name__ == "__main__":
-    main()
