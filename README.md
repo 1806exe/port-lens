@@ -25,7 +25,7 @@ If you want to scan common ports, you can omit the <start_port> and <end_port>:
 
 
 ```bash
-port-lens scan example.com
+port-lens example.com
 
 ```
 
