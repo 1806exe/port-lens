@@ -4,7 +4,7 @@ import os
 import time
 import argparse
 
-__version__ = "0.1"
+__version__ = "0.4"
 
 
 def clear_screen():
