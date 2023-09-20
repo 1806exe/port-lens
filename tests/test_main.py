@@ -1,3 +1,9 @@
+"""
+    Author: 1806exe
+    Email: 1806exe@gmail.com
+    GitHub: https://www.github.com/1806exe
+"""
+
 import pytest
 from io import StringIO
 import sys
