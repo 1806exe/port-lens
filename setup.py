@@ -1,6 +1,4 @@
 """setup.py: setuptools control file."""
-
-import re
 from setuptools import setup
 
 

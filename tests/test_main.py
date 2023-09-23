@@ -10,17 +10,17 @@ import sys
 import os
 
 # Import the code you want to test
-from port_lens.main import main  # Replace 'your_code_file' with the actual filename
+from port_lens.main import main 
 
 def test_main(monkeypatch, capsys):
-    args = ['google.com', '20', '30']  # Modify the arguments here
+    args = ['google.com', '20', '30'] 
     monkeypatch.setattr(sys, 'argv', ['script_name'] + args)
-    monkeypatch.setattr(os, 'system', lambda x: None)  # Mock the os.system function
+    monkeypatch.setattr(os, 'system', lambda x: None) 
 
     try:
         main()
         captured = capsys.readouterr()
-        assert "Scanning completed" in captured.out  # Check for a completion message
+        assert "Scanning completed" in captured.out 
     except SystemExit as e:
         assert e.code == 0
 
