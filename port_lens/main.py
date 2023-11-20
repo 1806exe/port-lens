@@ -34,9 +34,12 @@ def main():
     args = parser.parse_args()
 
     host = args.host
-    arg_timeout = args.timeout
+    
     ip = socket.gethostbyname(host)
-
+    if args.timeout:
+        arg_timeout = float(args.timeout)
+    else:
+        arg_timeout = 0.5
     if args.startport and args.endport:
         start_port = int(args.startport)
         end_port = int(args.endport)
@@ -67,7 +70,7 @@ def main():
     def check_port(host, port):
         try:
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            sock.settimeout(float(arg_timeout))
+            sock.settimeout(arg_timeout)
             result = sock.connect_ex((host, port))
             sock.close()
             return result
