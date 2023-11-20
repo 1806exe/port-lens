@@ -29,10 +29,12 @@ def main():
     parser.add_argument('host', metavar='H', help='Host name you want to scan')
     parser.add_argument('startport', metavar='P1', nargs='?', help='Start scan from this point.')
     parser.add_argument('endport', metavar='P2', nargs='?', help='Scan until this port')
+    parser.add_argument('timeout', metavar='T', nargs='?', help='Timeout between port scans')
 
     args = parser.parse_args()
 
     host = args.host
+    arg_timeout = args.timeout
     ip = socket.gethostbyname(host)
 
     if args.startport and args.endport:
@@ -47,6 +49,9 @@ def main():
     common_ports = {
         21: 'FTP',
         22: 'SSH',
+        53: 'DNS',
+        80: 'HTTP',
+        443: 'HTTPS',
         # ... (other common ports) ...
         10000: 'VIRTUALMIN/WEBMIN'
     }
@@ -62,7 +67,7 @@ def main():
     def check_port(host, port):
         try:
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            sock.settimeout(0.5)
+            sock.settimeout(float(arg_timeout))
             result = sock.connect_ex((host, port))
             sock.close()
             return result
@@ -88,7 +93,7 @@ def main():
                 open_ports.append(p)
                 sys.stdout.write('\b' * len(str(p)))
 
-        print("\nScanning completed at {time.strftime('%I:%M:%S %p')}")
+        print(f"\nScanning completed at {time.strftime('%I:%M:%S %p')}")
         ending_time = time.time()
         total_time = ending_time - starting_time
 
