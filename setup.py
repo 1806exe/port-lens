@@ -9,7 +9,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setup(
     name='port-lens',
     packages=['port_lens'],
-    version='0.4',
+    version='0.7',
     entry_points={
         "console_scripts": ["port-lens=port_lens.main:main"]
     },
